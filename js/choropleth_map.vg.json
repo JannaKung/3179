@@ -5,7 +5,7 @@
     "height": 400,
     "projection": {"type": "equalEarth"},
     "data": {
-      "url": "https://github.com/JannaKung/FIT-3179-Homework-Week-9/blob/19c3912d81e65a35baee373b088a093159cc423d/js/ne_110m_admin_0_countries.topojson",
+      "url": "https://raw.githubusercontent.com/JannaKung/FIT-3179-Homework-Week-9/main/js/ne_110m_admin_0_countries.topojson",
       "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
     },
     "transform": [
@@ -13,13 +13,17 @@
         "lookup": "properties.NAME",
         "from": {
           "data": {
-            "url": "https://github.com/JannaKung/FIT-3179-Homework-Week-9/blob/19c3912d81e65a35baee373b088a093159cc423d/data/energy-per-country_2022.csv"
+            "url": "https://raw.githubusercontent.com/JannaKung/FIT-3179-Homework-Week-9/main/data/energy-per-country_2022.csv",
+            "format": {"type": "csv"}
           },
           "key": "Country",
           "fields": ["Per capita electricity"]
         }
       },
-      {"calculate": "datum.Per capita electricity + 0.1", "as": "Per capita electricity"}
+      {
+        "calculate": "datum['Per capita electricity'] + 0.1",
+        "as": "Per capita electricity"
+      }
     ],
     "mark": {"type": "geoshape"},
     "encoding": {
